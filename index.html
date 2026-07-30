@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Canvas Confetti for Celebration Effect -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
             theme: {
@@ -33,72 +33,6 @@
             }
         }
     </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap');
-
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #FAF6F0;
-            color: #4A4E69;
-        }
-
-        .font-header {
-            font-family: 'Fredoka', cursive;
-        }
-
-        /* Ribbon Style Header */
-        .ribbon {
-            background: linear-gradient(90deg, #CDB4DB 0%, #FFC8DD 100%);
-            color: #FFFFFF;
-            box-shadow: 0 3px 8px rgba(205, 180, 219, 0.3);
-        }
-
-        /* Custom Cloud Box styling */
-        .cloud-box {
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: #FFFFFF;
-            border: 1.5px solid #CBD5E1;
-        }
-
-        .cloud-box:hover, .cloud-box.active {
-            transform: translateY(-3px) scale(1.02);
-            border-color: #CDB4DB;
-            background: #FFF5F7;
-            box-shadow: 0 6px 12px rgba(205, 180, 219, 0.25);
-        }
-
-        /* Star Rating Interactive */
-        .star-icon {
-            cursor: pointer;
-            transition: transform 0.2s, color 0.2s;
-        }
-        .star-icon:hover {
-            transform: scale(1.2);
-        }
-
-        /* Print Media Style - Exact PDF Layout */
-        @media print {
-            body {
-                background: white !important;
-                padding: 0 !important;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .print-only-container {
-                display: block !important;
-                box-shadow: none !important;
-                border: none !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-            .page-break {
-                page-break-inside: avoid;
-            }
-        }
-    </style>
 </head>
 <body class="py-6 px-3 sm:px-6 md:px-8 min-h-screen">
 
@@ -270,6 +204,13 @@
                             </div>
                         </div>
                     </div>
+                    <a href="https://nprecious.bcl.my/form/nprecious-math-studio-user"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="no-print mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-blue-600">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Dapatkan Math Studio
+                    </a>
                 </div>
 
                 <!-- 2. Worksheet Prompt Generator -->
@@ -289,6 +230,13 @@
                             </div>
                         </div>
                     </div>
+                    <a href="https://nprecious.my.canva.site/ultimate-prompt-generator-for-preschool-worksheet-ai-prompts-canva-gemini-compatible-website"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="no-print mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-indigo-500 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-600">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Lihat Unlimited Worksheet Prompt
+                    </a>
                 </div>
 
                 <!-- 3. Sticker Builder Studio -->
@@ -308,13 +256,21 @@
                             </div>
                         </div>
                     </div>
+                    <a href="https://nprecious.bcl.my/form/sticker-builder-studio-by-nprecious#get"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="no-print mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-pink-500 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-pink-600">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Dapatkan Sticker Builder Studio
+                    </a>
                 </div>
             </div>
 
             <!-- Nota Rasmi Nprecious -->
             <div class="mt-4 text-center">
                 <p class="text-[11px] font-medium text-slate-500 italic">
-                    * Math Studio, Unlimited Worksheet Generator, dan Sticker Builder Studio adalah produk rasmi Nprecious Kids Learning. Jangan ketinggalan, hubungi admin untuk dapatkan product.
+                    Math Studio, Unlimited Worksheet Prompt Generator dan Sticker Builder Studio ialah 
+                    <strong>produk rasmi NPrecious Learning.</strong> Klik butang produk untuk melihat maklumat lanjut.
                 </p>
             </div>
         </section>
@@ -610,7 +566,7 @@
                 <!-- Nota dalam Preview -->
                 <div class="mt-2 text-center">
                     <p class="text-[9px] text-gray-500 italic">
-                        * Math Studio, Unlimited Worksheet Generator, dan Sticker Builder Studio adalah produk rasmi Nprecious Kids Learning. Jangan ketinggalan, hubungi admin untuk dapatkan product.
+                        Math Studio, Unlimited Worksheet Prompt Generator dan Sticker Builder Studio ialah produk rasmi NPrecious Learning.
                     </p>
                 </div>
             </div>
@@ -704,262 +660,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LENGKAP -->
-    <script>
-        // State variables
-        let currentMood = '';
-        let ratingsState = {1:0, 2:0, 3:0, 4:0};
-
-        // Initialize draft on load
-        window.onload = () => {
-            loadDraft();
-            // Set today's date if empty
-            if(!document.getElementById('journalDate').value) {
-                const today = new Date().toISOString().split('T')[0];
-                document.getElementById('journalDate').value = today;
-                updateDayDisplay();
-            }
-        };
-
-        function updateDayDisplay() {
-            const dateVal = document.getElementById('journalDate').value;
-            if(!dateVal) return;
-            const days = ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu'];
-            const dayName = days[new Date(dateVal).getDay()];
-            document.getElementById('currentDayDisplay').innerHTML = `<i class="fa-regular fa-clock mr-1 text-pastel-purple"></i> Hari: ${dayName}`;
-            return dayName;
-        }
-
-        function selectMood(mood) {
-            currentMood = mood;
-            document.querySelectorAll('.cloud-box').forEach(el => {
-                el.classList.remove('active', 'border-pastel-purple', 'bg-[#FFF5F7]');
-            });
-            document.getElementById('mood-'+mood).classList.add('active', 'border-pastel-purple', 'bg-[#FFF5F7]');
-        }
-
-        function rateTask(taskId, stars) {
-            ratingsState[taskId] = stars;
-            const container = document.querySelector(`.star-rating[data-task="${taskId}"]`);
-            const icons = container.querySelectorAll('.star-icon');
-            icons.forEach((icon, index) => {
-                if(index < stars) {
-                    icon.classList.remove('fa-regular');
-                    icon.classList.add('fa-solid');
-                } else {
-                    icon.classList.remove('fa-solid');
-                    icon.classList.add('fa-regular');
-                }
-            });
-        }
-
-        function getFormData() {
-            return {
-                name: document.getElementById('childName').value,
-                age: document.getElementById('childAge').value,
-                date: document.getElementById('journalDate').value,
-                day: updateDayDisplay() || '-',
-                mood: currentMood,
-                mathJenis: document.getElementById('mathJenis').value,
-                mathJumlah: document.getElementById('mathJumlah').value,
-                mathMarkah: document.getElementById('mathMarkah').value,
-                wsJenis: document.getElementById('wsJenis').value,
-                wsJumlah: document.getElementById('wsJumlah').value,
-                stJenis: document.getElementById('stJenis').value,
-                stJumlah: document.getElementById('stJumlah').value,
-                solat: {
-                    subuh: document.getElementById('solatSubuh').checked,
-                    zohor: document.getElementById('solatZohor').checked,
-                    asar: document.getElementById('solatAsar').checked,
-                    maghrib: document.getElementById('solatMaghrib').checked,
-                    isyak: document.getElementById('solatIsyak').checked
-                },
-                quranSurah: document.getElementById('quranSurah').value,
-                quranAyat: document.getElementById('quranAyat').value,
-                subMatematik: document.getElementById('subMatematik').value,
-                subBahasa: document.getElementById('subBahasa').value,
-                subSains: document.getElementById('subSains').value,
-                subKreatif: document.getElementById('subKreatif').value,
-                checkboxes: {
-                    1: document.getElementById('check-1').checked,
-                    2: document.getElementById('check-2').checked,
-                    3: document.getElementById('check-3').checked,
-                    4: document.getElementById('check-4').checked
-                },
-                ratings: ratingsState,
-                parentNotes: document.getElementById('parentNotes').value
-            };
-        }
-
-        function saveJournal() {
-            const data = getFormData();
-            localStorage.setItem('nprecious_journal', JSON.stringify(data));
-
-            renderPdfPreviewTemplate(data);
-
-            // Celebration effects
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#FFC8DD', '#B5E2FA', '#FFF3B0'] });
-
-            // Swap visibility
-            document.getElementById('inputFormContainer').classList.add('hidden');
-            document.getElementById('previewBox').classList.remove('hidden');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            showToast('Jurnal disimpan & sedia untuk dicetak!');
-        }
-
-        function editJournal() {
-            // Swap visibility back
-            document.getElementById('previewBox').classList.add('hidden');
-            document.getElementById('inputFormContainer').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function renderPdfPreviewTemplate(data) {
-            // Update Header Info
-            document.getElementById('pdfName').innerText = data.name || '-';
-            document.getElementById('pdfAge').innerText = data.age || '-';
-
-            // Format Tarikh kepada dd/mm/yyyy (hb:mth:year)
-            if (data.date) {
-                const parts = data.date.split('-');
-                if(parts.length === 3) {
-                    document.getElementById('pdfDate').innerText = `${parts[2]}/${parts[1]}/${parts[0]}`;
-                } else {
-                    document.getElementById('pdfDate').innerText = data.date;
-                }
-            } else {
-                document.getElementById('pdfDate').innerText = '-';
-            }
-
-            document.getElementById('pdfDay').innerText = data.day || '-';
-            document.getElementById('pdfMood').innerText = data.mood || '-';
-
-            // Update AI & Kraf
-            document.getElementById('pdfMathJenis').innerText = data.mathJenis || '-';
-            document.getElementById('pdfMathJumlah').innerText = data.mathJumlah || '-';
-            document.getElementById('pdfMathMarkah').innerText = data.mathMarkah || '-';
-
-            document.getElementById('pdfWsJenis').innerText = data.wsJenis || '-';
-            document.getElementById('pdfWsJumlah').innerText = data.wsJumlah || '-';
-
-            document.getElementById('pdfStJenis').innerText = data.stJenis || '-';
-            document.getElementById('pdfStJumlah').innerText = data.stJumlah || '-';
-
-            // Update Solat & Al-Quran
-            const solatKeys = ['subuh', 'zohor', 'asar', 'maghrib', 'isyak'];
-            solatKeys.forEach(key => {
-                const el = document.getElementById(`pdfSolat${key.charAt(0).toUpperCase() + key.slice(1)}`);
-                if(data.solat && data.solat[key]) {
-                    el.className = "fa-solid fa-square-check text-emerald-600 text-sm";
-                } else {
-                    el.className = "fa-regular fa-square text-gray-300 text-sm";
-                }
-            });
-
-            document.getElementById('pdfQuranSurah').innerText = data.quranSurah || '-';
-            document.getElementById('pdfQuranAyat').innerText = data.quranAyat || '-';
-
-            // Update Subjek Pembelajaran
-            document.getElementById('pdfSubMatematik').innerText = data.subMatematik || '-';
-            document.getElementById('pdfSubBahasa').innerText = data.subBahasa || '-';
-            document.getElementById('pdfSubSains').innerText = data.subSains || '-';
-            document.getElementById('pdfSubKreatif').innerText = data.subKreatif || '-';
-
-            // Update Checkboxes & Stars
-            for(let i=1; i<=4; i++) {
-                // Checkbox Icons
-                const checkIcon = document.getElementById(`pdfCheck${i}`);
-                if(data.checkboxes && data.checkboxes[i]) {
-                    checkIcon.className = "fa-solid fa-square-check text-green-500";
-                } else {
-                    checkIcon.className = "fa-regular fa-square text-gray-300";
-                }
-
-                // Star Rating Generation
-                const starCount = (data.ratings && data.ratings[i]) ? data.ratings[i] : 0;
-                let starString = '';
-                for(let s=0; s<5; s++) {
-                    if(s < starCount) starString += '★';
-                    else starString += '☆';
-                }
-                document.getElementById(`pdfStar${i}`).innerText = starString;
-            }
-
-            // Update Nota Ibu Bapa
-            document.getElementById('pdfParentNotes').innerText = data.parentNotes || '-';
-        }
-
-        function loadDraft() {
-            try {
-                const saved = localStorage.getItem('nprecious_journal');
-                if(!saved) return;
-
-                const data = JSON.parse(saved);
-
-                if(data.name) document.getElementById('childName').value = data.name;
-                if(data.age) document.getElementById('childAge').value = data.age;
-                if(data.date) document.getElementById('journalDate').value = data.date;
-
-                if(data.mood) selectMood(data.mood);
-
-                if(data.mathJenis) document.getElementById('mathJenis').value = data.mathJenis;
-                if(data.mathJumlah) document.getElementById('mathJumlah').value = data.mathJumlah;
-                if(data.mathMarkah) document.getElementById('mathMarkah').value = data.mathMarkah;
-
-                if(data.wsJenis) document.getElementById('wsJenis').value = data.wsJenis;
-                if(data.wsJumlah) document.getElementById('wsJumlah').value = data.wsJumlah;
-
-                if(data.stJenis) document.getElementById('stJenis').value = data.stJenis;
-                if(data.stJumlah) document.getElementById('stJumlah').value = data.stJumlah;
-
-                if(data.solat) {
-                    if(data.solat.subuh) document.getElementById('solatSubuh').checked = true;
-                    if(data.solat.zohor) document.getElementById('solatZohor').checked = true;
-                    if(data.solat.asar) document.getElementById('solatAsar').checked = true;
-                    if(data.solat.maghrib) document.getElementById('solatMaghrib').checked = true;
-                    if(data.solat.isyak) document.getElementById('solatIsyak').checked = true;
-                }
-
-                if(data.quranSurah) document.getElementById('quranSurah').value = data.quranSurah;
-                if(data.quranAyat) document.getElementById('quranAyat').value = data.quranAyat;
-
-                if(data.subMatematik) document.getElementById('subMatematik').value = data.subMatematik;
-                if(data.subBahasa) document.getElementById('subBahasa').value = data.subBahasa;
-                if(data.subSains) document.getElementById('subSains').value = data.subSains;
-                if(data.subKreatif) document.getElementById('subKreatif').value = data.subKreatif;
-
-                if(data.parentNotes) document.getElementById('parentNotes').value = data.parentNotes;
-
-                if(data.checkboxes) {
-                    for(let i=1; i<=4; i++) {
-                        if(data.checkboxes[i]) document.getElementById(`check-${i}`).checked = true;
-                    }
-                }
-
-                if(data.ratings) {
-                    for(let i=1; i<=4; i++) {
-                        rateTask(i, data.ratings[i]);
-                    }
-                }
-
-                if(data.date) updateDayDisplay();
-
-            } catch(e) {
-                console.error("Gagal memuatkan draf: ", e);
-            }
-        }
-
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-5 right-5 bg-pastel-purple text-white px-5 py-3 rounded-2xl shadow-lg font-bold text-sm transition-all duration-300 z-50 flex items-center gap-2';
-            toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 2500);
-        }
-    </script>
+    <!-- Script File Linking -->
+    <script src="script.js"></script>
 </body>
 </html>
